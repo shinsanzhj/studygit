@@ -13,5 +13,9 @@ public class MainTester {
 	public static void main(String[] args) {
 		System.out.println("这个项目是用来学习git的");
 	}
+	
+	public static void addInMaster() {
+		System.out.println("这个方法时我在主线中添加的");
+	}
 
 }
