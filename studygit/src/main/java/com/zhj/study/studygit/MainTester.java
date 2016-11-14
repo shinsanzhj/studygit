@@ -13,4 +13,8 @@ public class MainTester {
 	public static void main(String[] args) {
 		System.out.println("这个项目是用来学习git的");
 	}
+	
+	public static void testConflict() {
+		System.out.println("测试冲突");
+	}
 }
