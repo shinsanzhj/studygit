@@ -14,4 +14,7 @@ public class MainTester {
 		System.out.println("这个项目是用来学习git的");
 	}
 
+	public static void addInHotfix() {
+		System.out.println("这个方法是我在1.0_hotfix001这个分支添加的");
+	}
 }
