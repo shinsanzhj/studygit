@@ -15,6 +15,6 @@ public class MainTester {
 	}
 	
 	public static void testConflict() {
-		System.out.println("测试冲突");
+		System.out.println("测试冲突——我在hotfix002修改的代码");
 	}
 }
