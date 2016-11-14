@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<!DOCTYPE struts PUBLIC    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.i18n.encoding" value="UTF-8"/>
+	<constant name="struts.multipart.maxSize" value="-1"/>
+	<constant name="struts.action.extension" value="action,,"/>
+	
+	
+	<package name="basePackage" namespace="/base" extends="struts-default">
+		<interceptors>
+			<!-- 自定义拦截器 -->
+			<interceptor name="sensitiveInterceptor" class="com.zhj.interceptor.SensitiveInterceptor"/>
+			<interceptor name="sessionInterceptor" class="com.zhj.interceptor.SessionInterceptor"/>
+			
+			<interceptor-stack name="globalStack">
+				<interceptor-ref name="defaultStack"/>
+				<interceptor-ref name="sensitiveInterceptor"/>
+			</interceptor-stack>
+		</interceptors>
+		
+		<default-interceptor-ref name="globalStack"/>
+		
+		<action name="baseAction" class="com.zhj.action.BaseAction" method="execute">
+			<interceptor-ref name="sensitiveInterceptor"/>
+			<interceptor-ref name="sessionInterceptor"/>
+		</action>
+		
+		<action name="abBase" class="com.zhj.action.BaseAction" method="execute2">
+			
+		</action>
+		
+	</package>
+	
+	<package name="userPackage" namespace="/user" extends="basePackage">
+		<default-interceptor-ref name="sessionInterceptor"/>
+		<action name="login" class="com.zhj.action.UserAction" method="login">
+			
+		</action>
+	</package>
+	
+	<!-- 负责统一页面转发的Action -->
+	<package name="pagePackage" namespace="/pages" extends="basePackage">
+		<action name="*" class="com.zhj.action.PagesAction" method="dispatch">
+			<result>/WEB-INF/pages/${#request["page_path"]}.jsp</result>
+		</action>
+	</package>
+	
+	
+</struts>
