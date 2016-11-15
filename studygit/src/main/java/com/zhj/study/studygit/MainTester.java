@@ -19,6 +19,6 @@ public class MainTester {
 	}
 	
 	public static void testFetchFromRemote() {
-		System.out.println("测试从github服务器拉取项目");
+		System.out.println("测试从github服务器拉取项目sss");
 	}
 }
